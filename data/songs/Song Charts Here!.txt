@@ -1,0 +1,8 @@
+Put your song charts here, any other chart format will most likely not work, so use the Dave Engine Chart Editor to convert it to the correct format!
+
+Dave Engine Chart Editor:
+https://drive.google.com/file/d/1jQQwW4fmJsECCh0645blzcKIq_s2WMxy/view
+
+All of the current formats that work, that i know of.
+Psych Engine - Perfectly!
+Codename Engine (Psych Export) - First Section Missing..

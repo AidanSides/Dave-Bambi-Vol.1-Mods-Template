@@ -1,0 +1,3 @@
+!! THIS IS NOT A OFFSET FILE, IT WILL MOST LIKELY BREAK IF YOU SET THIS TO A CHARACTER. !!
+
+Add your character offsets here!

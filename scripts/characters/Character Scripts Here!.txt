@@ -1,0 +1,1 @@
+Put your character scripts here, use this folder for adding animations to your character.

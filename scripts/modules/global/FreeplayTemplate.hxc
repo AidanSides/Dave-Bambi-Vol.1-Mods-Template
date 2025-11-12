@@ -1,0 +1,138 @@
+import Type;
+
+import ui.menu.freeplay.FreeplayState;
+import ui.menu.freeplay.category.Category;
+import ui.menu.freeplay.category.MainCategory;
+
+class FreeplayTemplate extends Module
+{
+	static var customSongs = [
+		{id: "your-song-name-here", color: [0xFF44BD32], week: -1, vinylPath: "vinyl_template"},
+	];
+	static var categoryIcon = "categoryIconHere";
+	static var categoryName = "categoryNameHere";
+
+	var inFreeplay:Bool = false;
+	var game:FreeplayState;
+	var controls;
+	var onAug:Bool;
+	var category:Category;
+	var catId:Int;
+    public function new()
+    {
+        super('FreeplayTemplate');
+		FlxG.signals.postUpdate.add(postUpdate);
+		FlxG.signals.preStateCreate.add(preStateCreate);
+	}
+
+    override function onUpdate(event:UpdateScriptEvent)
+    {
+		if (inFreeplay)
+		{
+			if (!game.InMainFreeplayState)
+			{
+				if (controls.ACCEPT && game.currentCategory == category)
+				{
+					onAug = true;
+					for (song in customSongs)
+						game.addSong(song);
+				}
+			}
+		}
+    }
+	var inThing = false;
+	function postUpdate()
+	{
+		if (inFreeplay)
+		{
+			if (onAug)
+			{
+				for (i => song in game.grpSongs.members)
+				{
+					if (i >= customSongs.length)
+					{
+						song.visible = false;
+						song.y = 99999;
+					}
+				}
+				for (i => icon in game.grpIcons.members)
+				{
+					if (i >= customSongs.length)
+					{
+						icon.visible = false;
+						icon.y = 99999;
+					}
+				}
+				if (game.InMainFreeplayState && !inThing)
+				{
+					inThing = true;
+					
+					while (game.songs.length > customSongs.length)
+						game.songs.pop();
+				}
+				if (!game.InMainFreeplayState && inThing)
+				{
+					inThing = false;
+					onAug = false;
+				}
+			}
+		}
+	}
+	function preStateCreate(state:FlxState)
+	{
+		if (Std.isOfType(state, FreeplayState))
+		{
+			game = state;
+			onFreeplay();
+		}
+	}
+    override function onStateChangePost(e:StateChangeScriptEvent)
+    {
+		if (Std.isOfType(e.targetState, FreeplayState))
+		{
+			inFreeplay = true;
+			game = e.targetState;
+			controls = game.controls;
+			onFreeplayPost();
+		}
+		else
+		{
+			inFreeplay = false;
+		}
+    }
+	function onFreeplay()
+	{
+		game.categoriesIds.push(game.categoriesIds[0]);
+		catId = game.categoriesIds.length - 1;
+
+	}
+	function onFreeplayPost()
+	{
+		category = game.categories[catId];
+		game.titles[catId].text = categoryName;
+		game.icons[catId].loadGraphic(Paths.image("freeplay/categories/" + categoryIcon));
+	}
+}
+
+class Fake extends Category
+{
+	public function new()
+	{
+		super("vsdave2");
+	}
+
+	override function getName()
+	{
+		return "vsdave2";
+	}
+
+	override function getIcon()
+	{
+		return "main";
+	}
+
+	override function getSongs()
+	{
+		return [];
+	}
+}

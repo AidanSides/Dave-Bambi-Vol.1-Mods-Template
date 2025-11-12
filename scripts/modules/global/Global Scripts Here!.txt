@@ -1,0 +1,1 @@
+Use this folder to add global scripts to your build, you can use the freeplay category template to add custom songs, you can remove it if you'd like when Volume 2 comes out.

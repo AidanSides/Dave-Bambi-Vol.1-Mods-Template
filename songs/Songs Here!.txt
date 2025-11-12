@@ -1,0 +1,1 @@
+Add your Inst and Voices files here, for your song to play without any music.

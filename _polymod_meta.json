@@ -1,0 +1,13 @@
+{
+  "title": "Mod Template for VS. Dave and Bambi: Volume 1.",
+  "description": "Use this to make your mods!",
+  "contributors": [
+    {
+      "name": "yourNameHere",
+		  "role": "yourModRoleHere"
+    }
+  ],
+  "api_version": "1.0.0",
+  "mod_version": "1.0.0",
+  "license": "Apache-2.0"
+}
