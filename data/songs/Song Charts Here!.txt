@@ -4,5 +4,6 @@ Dave Engine Chart Editor:
 https://drive.google.com/file/d/1jQQwW4fmJsECCh0645blzcKIq_s2WMxy/view
 
 All of the current formats that work, that i know of.
-Psych Engine - Perfectly!
+Psych Engine (Legacy Format) - Perfectly!
+
 Codename Engine (Psych Export) - First Section Missing..
